@@ -8,8 +8,8 @@ const app = (express());
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 const bodyParser = require('body-parser')
-//app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require('cors');
@@ -28,6 +28,7 @@ function listening(){
 //Add a GET route at '/all'
 app.get('/all', function(req, res){
     res.send(projectData);
+    console.log(projectData);
 });
 
 //Add a Post route to post & add data
@@ -38,5 +39,8 @@ app.post('/add', function(req, res){
         temp: req.body.temp,
         content: req.body.content
     }
-    projectData.push(newData);
+    /*projectData.push(newData);*/
+    projectData = req.body;
+    res.send(projectData);
+    console.log("1");
 });
