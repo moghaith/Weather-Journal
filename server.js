@@ -39,8 +39,6 @@ app.post('/add', function(req, res){
         temp: req.body.temp,
         content: req.body.content
     }
-    /*projectData.push(newData);*/
     projectData = req.body;
     res.send(projectData);
-    console.log("1");
 });

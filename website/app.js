@@ -1,13 +1,10 @@
-/*const { response } = require("express");*/
-
-
 /* Global Variables */
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 let apiKey ='&appid=368fbbe4658dc3cb8369e650cf3b80cf';
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
-
+//collect data when generate button is clicked
 document.getElementById('generate').addEventListener('click', generateDetails);
 const postData = async function(url = '', data = {}){
     console.log(data);
@@ -27,7 +24,7 @@ const postData = async function(url = '', data = {}){
         console.log("error", error);
     }
 }
-
+//function to update the UI with the data from the API
 function generateDetails(e){
     e.preventDefault();
     const cityZip = document.getElementById('zip').value;
@@ -43,7 +40,7 @@ function generateDetails(e){
     });
 };
 
-
+//Function to grap data from API, and send it to server
 const getZipWeather = async function(baseURL, zip, key){
     const res = await fetch(baseURL+zip+key)
     try{
@@ -56,8 +53,7 @@ const getZipWeather = async function(baseURL, zip, key){
 }
 
 
-
-
+//function to update the web page with the data (weather, user input)
 const updateUI = async function(){
     const req = await fetch('/all');
     try{
