@@ -1,9 +1,9 @@
 /* Global Variables */
-let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey ='&appid=368fbbe4658dc3cb8369e650cf3b80cf';
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey ='&appid=368fbbe4658dc3cb8369e650cf3b80cf&units=imperial';
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = (d.getMonth() + 1) + '/'+ d.getDate()+'/'+ d.getFullYear();
 //collect data when generate button is clicked
 document.getElementById('generate').addEventListener('click', generateDetails);
 const postData = async function(url = '', data = {}){
